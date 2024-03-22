@@ -6,7 +6,6 @@ import { createEventName } from '../constants';
 
 export const OnEvent = (event: Type<any>) => {
   const eventName = createEventName(event);
-  console.log(eventName);
 
   return applyDecorators(
     EventEmitterOnEvent(eventName),
