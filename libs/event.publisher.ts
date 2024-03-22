@@ -10,7 +10,7 @@ import { EventPublishOptions } from './interfaces';
 export class EventPublisher {
   constructor(private readonly eventEmitter: EventEmitter2) {}
 
-  async publish<T = any>(event: T, opts?: EventPublishOptions) {
+  async publish<T = any>(event: T, opts: EventPublishOptions = {}) {
     const prototype = Object.getPrototypeOf(event);
     const eventName = createEventName(prototype.constructor.name);
     const results: OnEventHandlerReturnType[] = await this.eventEmitter.emitAsync(eventName, event, ...(opts?.args ?? []));
@@ -20,7 +20,7 @@ export class EventPublisher {
         continue;
       }
 
-      if (opts?.throwError === true) {
+      if (opts.throwError === true) {
         throw result.error;
       } else {
         break;
