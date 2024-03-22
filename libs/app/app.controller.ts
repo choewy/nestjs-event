@@ -1,8 +1,12 @@
 import { Controller } from '@nestjs/common';
 
-import { AppService } from './app.service';
+import { HelloEvent } from './events/hello.event';
+import { OnEvent } from '../decorators';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  @OnEvent(HelloEvent)
+  async handleHelloEvent(event: HelloEvent) {
+    console.log(event);
+  }
 }
