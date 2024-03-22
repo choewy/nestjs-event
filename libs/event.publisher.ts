@@ -20,7 +20,7 @@ export class EventPublisher {
         continue;
       }
 
-      if (opts.throwError === true) {
+      if (opts?.throwError === true) {
         throw result.error;
       } else {
         break;
