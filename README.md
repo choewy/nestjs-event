@@ -1,7 +1,7 @@
-# NestJS Redis
+# NestJS Event
 
 ## Installing
 
 ```bash
-npm i @choewy/nestjs-redis
+npm i @choewy/nestjs-event
 ```
