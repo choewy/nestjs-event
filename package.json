@@ -1,0 +1,54 @@
+{
+  "name": "@choewy/nestjs-event",
+  "version": "0.0.0",
+  "description": "NestJS Event",
+  "main": "dist/libs/index.js",
+  "license": "MIT",
+  "author": "choewy",
+  "homepage": "https://github.com/choewy/nestjs-event#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/choewy/nestjs-event.git"
+  },
+  "bugs": {
+    "url": "https://github.com/choewy/nestjs-event/issues"
+  },
+  "keywords": [
+    "nestjs",
+    "nestjs event",
+    "eventemitter"
+  ],
+  "scripts": {
+    "prepare": "husky",
+    "lint": "eslint \"{libs,test}/**/*.ts\" --fix",
+    "start": "nodemon -w libs -e ts --exec ts-node libs/main.ts",
+    "build": "rm -rf dist && tsc",
+    "version:patch": "npm version patch && git push origin master",
+    "version:minor": "npm version minor && git push origin master",
+    "version:major": "npm version major && git push origin master"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.3.3",
+    "@nestjs/event-emitter": "^2.0.4",
+    "reflect-metadata": "^0.2.1"
+  },
+  "devDependencies": {
+    "@nestjs/core": "^10.3.3",
+    "@nestjs/platform-express": "^10.3.3",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "nodemon": "^3.1.0",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
+  },
+  "lint-staged": {
+    "{libs,test}/**/*.ts": "eslint --fix"
+  }
+}
