@@ -1,6 +1,6 @@
 {
   "name": "@choewy/nestjs-event",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "NestJS Event",
   "main": "dist/libs/index.js",
   "license": "MIT",
