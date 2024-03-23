@@ -13,7 +13,7 @@ export class EventPublisher {
     private readonly debugging?: boolean,
   ) {}
 
-  private debug(eventName: string, originResults: OnEventHandlerReturnType[]) {
+  private debug(event: string, eventName: string, originResults: OnEventHandlerReturnType[]) {
     if (!this.debugging) {
       return;
     }
@@ -27,9 +27,9 @@ export class EventPublisher {
     }));
 
     if (staticInstanceRef instanceof ConsoleLogger) {
-      Logger.debug(JSON.stringify({ eventName, results }, null, 2), EventPublisher.name);
+      Logger.debug(JSON.stringify({ message: event, eventName, results }, null, 2), EventPublisher.name);
     } else {
-      Logger.debug({ context: EventPublisher.name, eventName, results });
+      Logger.debug({ context: EventPublisher.name, message: event, eventName, results });
     }
   }
 
@@ -38,7 +38,7 @@ export class EventPublisher {
     const eventName = createEventName(prototype.constructor.name);
     const results: OnEventHandlerReturnType[] = await this.eventEmitter.emitAsync(eventName, event, ...(opts?.args ?? []));
 
-    this.debug(eventName, results);
+    this.debug(prototype.constructor.name, eventName, results);
 
     for (const result of results) {
       if (result.error === null) {
