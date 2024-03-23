@@ -13,8 +13,6 @@ export class EventPublisher {
     private readonly debugging?: boolean,
   ) {}
 
-  private readonly logger = new Logger(EventPublisher.name);
-
   private debug(eventName: string, originResults: OnEventHandlerReturnType[]) {
     if (!this.debugging) {
       return;
@@ -29,9 +27,9 @@ export class EventPublisher {
     }));
 
     if (staticInstanceRef instanceof ConsoleLogger) {
-      this.logger.debug(JSON.stringify({ eventName, results }, null, 2));
+      Logger.debug(JSON.stringify({ eventName, results }, null, 2), EventPublisher.name);
     } else {
-      this.logger.debug({ eventName, results });
+      Logger.debug({ context: EventPublisher.name, eventName, results });
     }
   }
 
