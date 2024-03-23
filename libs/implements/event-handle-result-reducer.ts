@@ -2,7 +2,10 @@ import { EventHandlerResultReducerGetValueOptions } from './types';
 import { OnEventHandlerReturnType } from '../decorators';
 
 export class EventHandleResultReducer {
-  constructor(private readonly results: OnEventHandlerReturnType[]) {}
+  constructor(
+    public readonly eventName: string,
+    private readonly results: OnEventHandlerReturnType[],
+  ) {}
 
   getValues(opts?: EventHandlerResultReducerGetValueOptions) {
     const values: any[] = [];

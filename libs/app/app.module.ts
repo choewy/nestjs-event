@@ -6,7 +6,7 @@ import { EventModule } from '../event.module';
 import { EventPublisher } from '../event.publisher';
 
 @Module({
-  imports: [EventModule.register()],
+  imports: [EventModule.register({ debugging: true })],
   controllers: [AppController],
 })
 export class AppModule implements OnApplicationBootstrap {
